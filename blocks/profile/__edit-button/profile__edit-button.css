@@ -7,4 +7,9 @@
   cursor: pointer;
   margin: 15px 0 0;
   padding: 0;
+  transition: opacity 0.2s linear;
+}
+
+.profile__edit-button:hover {
+  opacity: 0.6;
 }

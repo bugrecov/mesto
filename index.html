@@ -37,7 +37,7 @@
         <div class="item">
           <img src="./images/kirill-pershin-1404681-unsplash.png" alt="Фотка на карточке" class="item__image">
             <div class="item__bottom-block">
-              <div class="item__title">Гора Эльбрус"</div>
+              <div class="item__title">Гора Эльбрус</div>
               <div class="item__like"></div>
             </div>
         </div>
@@ -76,5 +76,45 @@
       <p class="footer__copyright">© 2022 Mesto Russia</p>
     </footer>
   </div>
+
+  <!-- Popup -->
+    <section class="popup popup_edit-profile">
+      <div class="popup__container">
+        <img src="./images/popup__close-icon.svg" alt="" class="popup__close">
+        <div class="popup__content">
+          <h2 class="popup__title">Редактировать профиль</h2>
+            <form class="popup__form" name="profileEditPopupForm" novalidate>
+              <label class="popup__field">
+                <input
+                  type="text"
+                  class="popup__input popup__input_type_name"
+                  placeholder="Имя"
+                  name="name"
+                  id="name-input"
+                  minlength="2"
+                  maxlength="40"
+                  required>
+                <span class="popup__input-error name-input-error"></span>
+              </label>
+    
+              <label class="popup__field">
+                <input
+                  type="text"
+                  class="popup__input popup__input_type_job"
+                  id="job-input"
+                  placeholder="Профессия"
+                  name="job"
+                  minlength="2"
+                  maxlength="200"
+                  required>
+                <span class="popup__input-error job-input-error"></span>
+              </label>
+    
+              <button class="popup__save-button" type="submit">Сохранить</button>
+            </form>
+        </div>
+      </div>
+    </section>
+    <script src="./scripts/index.js"></script>
 </body>
 </html>
