@@ -5,4 +5,10 @@
   height: 19px;
   align-self: center;
   margin: 0;
+  transition: opacity 0.2s linear;
+  cursor: pointer;
+}
+
+.item__like:hover {
+  opacity: 0.5;
 }
