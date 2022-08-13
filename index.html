@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Mesto</title>
+</head>
+<body bgcolor="#000">
+  <div class="page">
+    <header class="header">
+      <div class="header__logo"></div>
+    </header>
+
+    <main class="content">
+      <sesction class="profile">
+        <div class="profile__card">
+          <div class="profile__avatar"></div>
+            <div class="profile__info">
+              <h1 class="profile__title">Жак-Ив Кусто</h1>
+              <button class="profile__edit-button"></button>
+              <p class="profile__description">Исследователь океана</p>
+          </div>
+        </div>
+        <button class="profile__add-button"></button>
+      </sesction>
+
+      <section class="grid-elements">
+        <div class="item">
+          <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Фотка на карточке" class="item__image">
+            <div class="item__bottom-block">
+              <div class="item__title">Карачаевск</div>
+              <div class="item__like"></div>
+            </div>
+        </div>
+        <div class="item">
+          <img src="./images/kirill-pershin-1404681-unsplash.png" alt="Фотка на карточке" class="item__image">
+            <div class="item__bottom-block">
+              <div class="item__title">Гора Эльбрус</div>
+              <div class="item__like"></div>
+            </div>
+        </div>
+        <div class="item">
+          <img src="./images/kirill-pershin-1088404-unsplash.png" alt="Фотка на карточке" class="item__image">
+            <div class="item__bottom-block">
+              <div class="item__title">Донбай</div>
+              <div class="item__like"></div>
+            </div>
+        </div>
+        <div class="item">
+          <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Фотка на карточке" class="item__image">
+            <div class="item__bottom-block">
+              <div class="item__title">Гора Эльбрус</div>
+              <div class="item__like"></div>
+            </div>
+        </div>
+        <div class="item">
+          <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Фотка на карточке" class="item__image">
+            <div class="item__bottom-block">
+              <div class="item__title">Донбай</div>
+              <div class="item__like"></div>
+            </div>
+        </div>
+        <div class="item">
+          <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Фотка на карточке" class="item__image">
+            <div class="item__bottom-block">
+              <div class="item__title">Карачаево-Черкессия</div>
+              <div class="item__like"></div>
+            </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__copyright">© 2022 Mesto Russia</p>
+    </footer>
+  </div>
+
+  <!-- Popup -->
+    <section class="popup popup_type_edit-profile visibility">
+      <div class="popup__container">
+        <img src="./images/popup__close-icon.svg" alt="" class="popup__close">
+        <div class="popup__content">
+          <h2 class="popup__title">Редактировать профиль</h2>
+            <form class="popup__form" name="profileEditPopupForm" novalidate>
+              <label class="popup__field">
+                <input
+                  type="text"
+                  class="popup__input popup__input_type_name"
+                  placeholder="Имя"
+                  name="name"
+                  id="name-input"
+                  minlength="2"
+                  maxlength="40"
+                  required>
+                <span class="popup__input-error name-input-error"></span>
+              </label>
+    
+              <label class="popup__field">
+                <input
+                  type="text"
+                  class="popup__input popup__input_type_job"
+                  id="job-input"
+                  placeholder="Профессия"
+                  name="job"
+                  minlength="2"
+                  maxlength="200"
+                  required>
+                <span class="popup__input-error job-input-error"></span>
+              </label>
+    
+              <button class="popup__save-button" type="submit">Сохранить</button>
+            </form>
+        </div>
+      </div>
+    </section>
+    <script src="./scripts/index.js"></script>
+</body>
+</html>
