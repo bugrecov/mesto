@@ -17,13 +17,14 @@
 @import url(../blocks/profile/__info/profile__info.css);
 
 @import url(../blocks/grid-elements/grid-elements.css);
+@import url(../blocks/grid-elements/__list/grid-elements__list.css);
 
 @import url(../blocks/item/item.css);
 @import url(../blocks/item/__title/item__title.css);
 @import url(../blocks/item/__image/item__image.css);
 @import url(../blocks/item/__like/item__like.css);
 @import url(../blocks/item/__bottom-block/item__bottom-block.css);
-@import url(../blocks/item/__like/item__like_active.css);
+@import url(../blocks/item/__like/_active/item__like_active.css);
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);

@@ -6,6 +6,8 @@
   width: 880px;
   margin: 0 auto;
   padding-bottom: 66px;
+  list-style-type: none;
+  padding-left: 0;
 }
 
 @media screen and (max-width: 1023px)  {

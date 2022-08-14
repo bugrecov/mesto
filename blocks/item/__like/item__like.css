@@ -1,12 +1,15 @@
 .item__like {
   background-image: url(../../../images/like.svg);
-  background-size: cover;
+  background-size: auto;
   width: 22px;
   height: 19px;
   align-self: center;
   margin: 0;
+  padding: 0;
   transition: opacity 0.2s linear;
   cursor: pointer;
+  border: 0;
+  background-color: transparent;
 }
 
 .item__like:hover {

@@ -2,8 +2,17 @@
   position: absolute;
   top: -40px;
   right: -40px;
-    cursor: pointer;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
   transition: opacity 0.2s linear;
+  outline: none;
+  border: 0;
+  background: transparent;
+  background-size: contain;
+  background-image: url(../../../images/popup__close-icon.svg);
+  width: 32px;
+  height: 32px  ;
 }
 
 .popup__close:hover {
