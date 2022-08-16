@@ -6,6 +6,15 @@
   grid-template-columns: 1fr 24px;
   column-gap: 18px;
   max-width: 548px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media screen and (max-width: 1023px) {
+  .profile__info {
+    max-width: 400px;
+  }
 }
 
 @media screen and (max-width: 767px) {

@@ -34,11 +34,10 @@ function formSubmitHandler (evt) {
   const nameInputValue = popup.querySelector('.popup__input_type_name').value;
   const jobInputValue = popup.querySelector('.popup__input_type_job').value;
 
-  // profileName.getAttribute('value');
-  // profileJob.getAttribute('value');
-
   profileName.textContent = nameInputValue
   profileJob.textContent = jobInputValue
+
+  popup.classList.toggle('popup_opened');
 }
 
 formElement.addEventListener('submit', formSubmitHandler);
