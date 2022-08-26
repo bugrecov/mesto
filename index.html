@@ -28,16 +28,6 @@
 
       <section aria-label="Места" class="places">
         <ul class="grid-elements">
-          <template id="place-card">
-            <li class="item">
-              <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt="Фотка на карточке" class="item__image">
-                <div class="item__bottom-block">
-                  <h2 class="item__title">Карачаевск</h2>
-                  <button class="item__like"></button>
-                </div>
-                <button type="button" class="item__trash"></button>
-            </li>
-          </template>
         </ul>
       </section>
     </main>
@@ -48,7 +38,7 @@
   </div>
 
   <!-- Popup -->
-    <div class="popup">
+    <div class="popup" id="edit-popup">
       <div class="popup__container">
         <button class="popup__close">
           <!-- <img src="./images/popup__close-icon.svg" alt=""> -->
@@ -87,6 +77,57 @@
         </div>
       </div>
     </div>
-    <script src="./scripts/index.js"></script>
+
+    <div class="popup" id="add-card-popup">
+      <div class="popup__container">
+        <button class="popup__close">
+          <!-- <img src="./images/popup__close-icon.svg" alt=""> -->
+        </button>
+        <div class="popup__content">
+          <h2 class="popup__title">Редактировать профиль</h2>
+            <form class="popup__form" name="profileEditPopupForm" novalidate>
+              <label class="popup__field">
+                <input
+                  type="text"
+                  class="popup__input popup__input_type_name"
+                  placeholder="Имя"
+                  name="name"
+                  id="name-input"
+                  minlength="2"
+                  maxlength="40"
+                  required>
+                <span class="popup__input-error name-input-error"></span>
+              </label>
+    
+              <label class="popup__field">
+                <input
+                  type="text"
+                  class="popup__input popup__input_type_job"
+                  id="job-input"
+                  placeholder="Профессия"
+                  name="job"
+                  minlength="2"
+                  maxlength="200"
+                  required>
+                <span class="popup__input-error job-input-error"></span>
+              </label>
+    
+              <button class="popup__save-button" type="submit">Сохранить</button>
+            </form>
+        </div>
+      </div>
+    </div>
+
+      <li class="item" id="place-card">
+        <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt="Фотка на карточке" class="item__image">
+          <div class="item__bottom-block">
+            <h2 class="item__title">Карачаевск</h2>
+            <button class="item__like"></button>
+          </div>
+          <button type="button" class="item__trash"></button>
+      </li>
+
+      <script src="./scripts/index.js"></script>
+
 </body>
 </html>
