@@ -28,92 +28,17 @@
 
       <section aria-label="Места" class="places">
         <ul class="grid-elements">
-          <li class="item">
-            <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Фотка на карточке" class="item__image">
-              <div class="item__bottom-block">
-                <h2 class="item__title">Карачаевск</h2>
-                <button class="item__like"></button>
-              </div>
-          </li>
-          <li class="item">
-            <img src="./images/kirill-pershin-1404681-unsplash.png" alt="Фотка на карточке" class="item__image">
-              <div class="item__bottom-block">
-                <h2 class="item__title">Гора Эльбрус</h2>
-                <button class="item__like"></button>
-              </div>
-          </li>
-          <li class="item">
-            <img src="./images/kirill-pershin-1088404-unsplash.png" alt="Фотка на карточке" class="item__image">
-              <div class="item__bottom-block">
-                <h2 class="item__title">Донбай</h2>
-                <button class="item__like"></button>
-              </div>
-          </li>
-          <li class="item">
-            <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Фотка на карточке" class="item__image">
-              <div class="item__bottom-block">
-                <h2 class="item__title">Гора Эльбрус</h2>
-                <button class="item__like"></button>
-              </div>
-          </li>
-          <li class="item">
-            <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Фотка на карточке" class="item__image">
-              <div class="item__bottom-block">
-                <h2 class="item__title">Донбай</h2>
-                <button class="item__like"></button>
-              </div>
-          </li>
-          <li class="item">
-            <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Фотка на карточке" class="item__image">
-              <div class="item__bottom-block">
-                <h2 class="item__title">Карачаево-Черкессия</h2>
-                <button class="item__like"></button>
-              </div>
-          </li>
+          <template id="place-card">
+            <li class="item">
+              <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt="Фотка на карточке" class="item__image">
+                <div class="item__bottom-block">
+                  <h2 class="item__title">Карачаевск</h2>
+                  <button class="item__like"></button>
+                </div>
+                <button type="button" class="item__trash"></button>
+            </li>
+          </template>
         </ul>
-        
-        <!-- <li class="item">
-          <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Фотка на карточке" class="item__image">
-            <div class="item__bottom-block">
-              <h2 class="item__title">Карачаевск</h2>
-              <button class="item__like"></button>
-            </div>
-        </li>
-        <li class="item">
-          <img src="./images/kirill-pershin-1404681-unsplash.png" alt="Фотка на карточке" class="item__image">
-            <div class="item__bottom-block">
-              <h2 class="item__title">Гора Эльбрус</h2>
-              <button class="item__like"></button>
-            </div>
-        </li>
-        <li class="item">
-          <img src="./images/kirill-pershin-1088404-unsplash.png" alt="Фотка на карточке" class="item__image">
-            <div class="item__bottom-block">
-              <h2 class="item__title">Донбай</h2>
-              <button class="item__like"></button>
-            </div>
-        </li>
-        <li class="item">
-          <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Фотка на карточке" class="item__image">
-            <div class="item__bottom-block">
-              <h2 class="item__title">Гора Эльбрус</h2>
-              <button class="item__like"></button>
-            </div>
-        </li>
-        <li class="item">
-          <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Фотка на карточке" class="item__image">
-            <div class="item__bottom-block">
-              <h2 class="item__title">Донбай</h2>
-              <button class="item__like"></button>
-            </div>
-        </li>
-        <li class="item">
-          <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Фотка на карточке" class="item__image">
-            <div class="item__bottom-block">
-              <h2 class="item__title">Карачаево-Черкессия</h2>
-              <button class="item__like"></button>
-            </div>
-        </li> -->
       </section>
     </main>
 
