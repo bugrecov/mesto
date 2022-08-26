@@ -1,11 +1,17 @@
-const popup = document.querySelector('.popup');
+const editPopup = document.querySelector('#edit-popup');
 const openEditButton = document.querySelector('.profile__edit-button');
-const closeButton = popup.querySelector('.popup__close');
-let formElement = document.querySelector('.popup__form');
-let nameInput = formElement.querySelector('.popup__input_type_name');
-let jobInput = formElement.querySelector('.popup__input_type_job');
+const closeButtons = document.querySelectorAll('.popup__close');
+let editForm = editPopup.querySelector('.popup__form');
+let nameInput = editForm.querySelector('.popup__input_type_name');
+let jobInput = editForm.querySelector('.popup__input_type_job');
 let profileName = document.querySelector('.profile__title');
 let profileJob = document.querySelector('.profile__description');
+
+const addPopup = document.querySelector('#add-card-popup');
+const openAddButton = document.querySelector('.profile__add-button');
+const addForm = addPopup.querySelector('.popup__form');
+const placeInput = addForm.querySelector('.popup__input_type_name');
+const linkInput = addForm.querySelector('.popup__input_type_job');
 
 const initialCards = [
   {
@@ -44,32 +50,55 @@ const initialCards = [
 // console.log('openEditButton', openEditButton);
 // console.log('openEditButton', closeButton);
 
-const togglePopup = function () {
-  popup.classList.toggle('popup_opened');
-  nameInput.value = profileName.textContent
-  jobInput.value = profileJob.textContent
+const toggleEditPopup = function () {
+  editPopup.classList.toggle('popup_opened');
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileJob.textContent;
 }
 
-openEditButton.addEventListener('click', togglePopup)
-closeButton.addEventListener('click', togglePopup)
+function closePopups() {
+  document.querySelector('.popup_opened').classList.remove('popup_opened');
+}
 
-// openAddCardButton.addEventListener('click', togglePopup)
+openEditButton.addEventListener('click', toggleEditPopup);
+closeButtons.forEach((closeButton)=>{
+  closeButton.addEventListener('click', closePopups);
+})
+
+const toggleAddPopup = function () {
+  addPopup.classList.toggle('popup_opened');
+}
+openAddButton.addEventListener('click', toggleAddPopup);
 
 // Форма
 
 function formSubmitHandler (evt) {
   evt.preventDefault();
 
-  const nameInputValue = popup.querySelector('.popup__input_type_name').value;
-  const jobInputValue = popup.querySelector('.popup__input_type_job').value;
+  const nameInputValue = editPopup.querySelector('.popup__input_type_name').value;
+  const jobInputValue = editPopup.querySelector('.popup__input_type_job').value;
 
   profileName.textContent = nameInputValue
   profileJob.textContent = jobInputValue
 
-  popup.classList.toggle('popup_opened');
+  editPopup.classList.toggle('popup_opened');
 }
 
-formElement.addEventListener('submit', formSubmitHandler);
+editForm.addEventListener('submit', formSubmitHandler);
+
+
+
+function addFormSubmitHandler (evt) {
+  evt.preventDefault();
+
+  const placeInputValue = addPopup.querySelector('.popup__input_type_name').value;
+  const linkInputValue = addPopup.querySelector('.popup__input_type_job').value;
+  printCard(placeInputValue, linkInputValue);
+
+  addPopup.classList.toggle('popup_opened');
+}
+
+addForm.addEventListener('submit', addFormSubmitHandler);
 
 
 // 1 Клонирование карточки
