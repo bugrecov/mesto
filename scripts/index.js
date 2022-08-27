@@ -110,14 +110,23 @@ addForm.addEventListener('submit', addFormSubmitHandler);
 
 function printCard(text, link) {
   const placeCard = document.querySelector('#place-card');
-  const cardHTML = placeCard.cloneNode(true);
+  const cardHTML = placeCard.content.cloneNode(true);
   const img = cardHTML.querySelector('.item__image');
   const cloneText = cardHTML.querySelector('.item__title');
+  const like = cardHTML.querySelector('.item__like');
+
+  console.log('like', like)
   
   img.src = link;
   cloneText.textContent = text;
-  document.querySelector('.grid-elements').append(cardHTML);
-}
+  document.querySelector('.grid-elements').append(cardHTML)
+
+  like.addEventListener('click', (evt) => 
+  like.classList.toggle('item__ike_active')
+  );
+
+  return printCard;
+} 
 
 function loopCards(){
   initialCards.forEach((el) => {
