@@ -13,6 +13,10 @@ const addForm = addPopup.querySelector('.popup__form');
 const placeInput = addForm.querySelector('.popup__input_type_name');
 const linkInput = addForm.querySelector('.popup__input_type_job');
 
+const viewPopup = document.querySelector('#popup-image');
+const viewPopupImg = viewPopup.querySelector('.popup__image');
+const viewPopupText = viewPopup.querySelector('.popup__image-caption');
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -54,6 +58,13 @@ const toggleEditPopup = function () {
   editPopup.classList.toggle('popup_opened');
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
+}
+
+const toggleViewPopup = function (src, text) {
+  viewPopup.classList.toggle('popup_opened');
+  viewPopupImg.src = src;
+  viewPopupImg.alt = text;
+  viewPopupText.textContent = text;
 }
 
 function closePopups() {
@@ -114,6 +125,7 @@ function printCard(text, link) {
   const img = cardHTML.querySelector('.item__image');
   const cloneText = cardHTML.querySelector('.item__title');
   const like = cardHTML.querySelector('.item__like');
+  const trash = cardHTML.querySelector('.item__trash');
 
   console.log('like', like)
   
@@ -121,12 +133,22 @@ function printCard(text, link) {
   cloneText.textContent = text;
   document.querySelector('.grid-elements').append(cardHTML)
 
-  like.addEventListener('click', (evt) => 
-  like.classList.toggle('item__ike_active')
+  like.addEventListener('click', () => 
+    like.classList.toggle('item__like_active')
   );
+
+  trash.addEventListener('click', () => 
+    trash.closest('.item').remove()
+  );
+
+  img.addEventListener('click', () =>
+    toggleViewPopup(img.src, cloneText.textContent)
+  )
+
 
   return printCard;
 } 
+
 
 function loopCards(){
   initialCards.forEach((el) => {
@@ -135,12 +157,3 @@ function loopCards(){
 }
 
 loopCards();
-initialCards.push({name: 'xxx', link :'xxx'});
-
-printCard('XXX','YYY');
-
-function addCard() {
-
-}
-
-// При добавлении карточки (после сделанного попапа) скопировать значение из полей и добавить их в массив (через пуш) initialCards.push({name: 'xxx', link :'xxx'})
