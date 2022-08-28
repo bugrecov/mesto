@@ -107,6 +107,9 @@ function addFormSubmitHandler (evt) {
   printCard(placeInputValue, linkInputValue);
 
   addPopup.classList.toggle('popup_opened');
+  placeInput.value = '';
+  linkInput.value = '';
+  
 }
 
 addForm.addEventListener('submit', addFormSubmitHandler);
@@ -131,7 +134,7 @@ function printCard(text, link) {
   
   img.src = link;
   cloneText.textContent = text;
-  document.querySelector('.grid-elements').append(cardHTML)
+  document.querySelector('.grid-elements').prepend(cardHTML)
 
   like.addEventListener('click', () => 
     like.classList.toggle('item__like_active')
