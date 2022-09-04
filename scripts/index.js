@@ -8,7 +8,7 @@ const profileName = document.querySelector('.profile__title');
 const profileJob = document.querySelector('.profile__description');
 
 const cardAddPopup = document.querySelector('#add-card-popup');
-const profileAddButton = document.querySelector('.profile__add-button');
+const profileAddPlaceButton = document.querySelector('.profile__add-button');
 const placePopupForm = cardAddPopup.querySelector('.popup__form');
 const placeInput = placePopupForm.querySelector('.popup__input_type_name');
 const linkInput = placePopupForm.querySelector('.popup__input_type_job');
@@ -16,6 +16,16 @@ const linkInput = placePopupForm.querySelector('.popup__input_type_job');
 const viewPopup = document.querySelector('#popup-image');
 const viewPopupImg = viewPopup.querySelector('.popup__image');
 const viewPopupText = viewPopup.querySelector('.popup__image-caption');
+
+const placeCard = document.querySelector('#place-card');
+const cardHTML = placeCard.content.cloneNode(true);
+const img = cardHTML.querySelector('.item__image');
+const cloneText = cardHTML.querySelector('.item__title');
+const like = cardHTML.querySelector('.item__like');
+const trash = cardHTML.querySelector('.item__trash');
+
+const container = document.querySelector('.grid-elements');
+
 
 const initialCards = [
   {
@@ -45,14 +55,18 @@ const initialCards = [
 ];
 
 
-const togglepopupProfile = function () {
-  popupProfile.classList.toggle('popup_opened');
+const openProfilePopup = function () {
+  popupProfile.classList.add('popup_opened');
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
 }
 
-const toggleViewPopup = function (src, text) {
-  viewPopup.classList.toggle('popup_opened');
+const openAddPlacePopup = function () {
+  cardAddPopup.classList.add('popup_opened');
+}
+
+const openViewPopup = function (src, text) {
+  viewPopup.classList.add('popup_opened');
   viewPopupImg.src = src;
   viewPopupImg.alt = text;
   viewPopupText.textContent = text;
@@ -62,19 +76,16 @@ function closePopups() {
   document.querySelector('.popup_opened').classList.remove('popup_opened');
 }
 
-profileEditButton.addEventListener('click', togglepopupProfile);
+profileEditButton.addEventListener('click', openProfilePopup);
 popupsClose.forEach((closeButton)=>{
   closeButton.addEventListener('click', closePopups);
 })
 
-const togglecardAddPopup = function () {
-  cardAddPopup.classList.toggle('popup_opened');
-}
-profileAddButton.addEventListener('click', togglecardAddPopup);
+profileAddPlaceButton.addEventListener('click', openAddPlacePopup);
 
 // Форма
 
-function submitProfileForm (evt) {
+function formSubmitHandler (evt) {
   evt.preventDefault();
 
   const nameInputValue = popupProfile.querySelector('.popup__input_type_name').value;
@@ -83,27 +94,27 @@ function submitProfileForm (evt) {
   profileName.textContent = nameInputValue
   profileJob.textContent = jobInputValue
 
-  popupProfile.classList.toggle('popup_opened');
+  closePopups();
 }
 
-popupForm.addEventListener('submit', submitProfileForm);
+popupForm.addEventListener('submit', formSubmitHandler);
 
 
 
-function placePopupsubmitProfileForm (evt) {
+function placePopupFormSubmitHandler (evt) {
   evt.preventDefault();
 
   const placeInputValue = cardAddPopup.querySelector('.popup__input_type_name').value;
   const linkInputValue = cardAddPopup.querySelector('.popup__input_type_job').value;
-  printCard(placeInputValue, linkInputValue);
+  renderCard(placeInputValue, linkInputValue);
 
-  cardAddPopup.classList.toggle('popup_opened');
+  closePopups();
   placeInput.value = '';
   linkInput.value = '';
   
 }
 
-placePopupForm.addEventListener('submit', placePopupsubmitProfileForm);
+placePopupForm.addEventListener('submit', placePopupFormSubmitHandler);
 
 
 // 1 Клонирование карточки
@@ -113,6 +124,7 @@ placePopupForm.addEventListener('submit', placePopupsubmitProfileForm);
 // 5 Написать функцию для добавления карточки в ul
 // 6 Пройтись по массиву и вызвать функцию (к каждому элементу)
 
+// создает новую карточку
 function printCard(text, link) {
   const placeCard = document.querySelector('#place-card');
   const cardHTML = placeCard.content.cloneNode(true);
@@ -123,7 +135,7 @@ function printCard(text, link) {
   
   img.src = link;
   cloneText.textContent = text;
-  document.querySelector('.grid-elements').prepend(cardHTML)
+  // container.prepend(cardHTML);
 
   like.addEventListener('click', () => 
     like.classList.toggle('item__like_active')
@@ -134,17 +146,24 @@ function printCard(text, link) {
   );
 
   img.addEventListener('click', () =>
-    toggleViewPopup(img.src, cloneText.textContent)
+    openViewPopup(img.src, cloneText.textContent)
   )
 
 
-  return printCard;
+  return cardHTML;
 } 
 
+// добавляет новую карточку в html
+function renderCard(text, link) {
+  const newCard = printCard(text, link);
+  container.prepend(newCard);
+}
 
+
+// создает карточки из данных массива
 function loopCards(){
   initialCards.forEach((el) => {
-    printCard(el.name, el.link)
+    renderCard(el.name, el.link)
   })
 }
 
