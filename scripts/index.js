@@ -1,17 +1,17 @@
-const editPopup = document.querySelector('#edit-popup');
-const openEditButton = document.querySelector('.profile__edit-button');
-const closeButtons = document.querySelectorAll('.popup__close');
-let editForm = editPopup.querySelector('.popup__form');
-let nameInput = editForm.querySelector('.popup__input_type_name');
-let jobInput = editForm.querySelector('.popup__input_type_job');
-let profileName = document.querySelector('.profile__title');
-let profileJob = document.querySelector('.profile__description');
+const popupProfile = document.querySelector('#edit-popup');
+const profileEditButton = document.querySelector('.profile__edit-button');
+const popupsClose = document.querySelectorAll('.popup__close');
+const popupForm = popupProfile.querySelector('.popup__form');
+const nameInput = popupForm.querySelector('.popup__input_type_name');
+const jobInput = popupForm.querySelector('.popup__input_type_job');
+const profileName = document.querySelector('.profile__title');
+const profileJob = document.querySelector('.profile__description');
 
-const addPopup = document.querySelector('#add-card-popup');
-const openAddButton = document.querySelector('.profile__add-button');
-const addForm = addPopup.querySelector('.popup__form');
-const placeInput = addForm.querySelector('.popup__input_type_name');
-const linkInput = addForm.querySelector('.popup__input_type_job');
+const cardAddPopup = document.querySelector('#add-card-popup');
+const profileAddButton = document.querySelector('.profile__add-button');
+const placePopupForm = cardAddPopup.querySelector('.popup__form');
+const placeInput = placePopupForm.querySelector('.popup__input_type_name');
+const linkInput = placePopupForm.querySelector('.popup__input_type_job');
 
 const viewPopup = document.querySelector('#popup-image');
 const viewPopupImg = viewPopup.querySelector('.popup__image');
@@ -44,18 +44,9 @@ const initialCards = [
   }
 ];
 
-// console.log('formElement', formElement)
-// console.log('nameInput', nameInput)
-// console.log('jobInput', jobInput)
-// console.log('profileName', profileName)
-// console.log('profileJob', profileJob)
 
-// console.log('popup', popup);
-// console.log('openEditButton', openEditButton);
-// console.log('openEditButton', closeButton);
-
-const toggleEditPopup = function () {
-  editPopup.classList.toggle('popup_opened');
+const togglepopupProfile = function () {
+  popupProfile.classList.toggle('popup_opened');
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
 }
@@ -71,48 +62,48 @@ function closePopups() {
   document.querySelector('.popup_opened').classList.remove('popup_opened');
 }
 
-openEditButton.addEventListener('click', toggleEditPopup);
-closeButtons.forEach((closeButton)=>{
+profileEditButton.addEventListener('click', togglepopupProfile);
+popupsClose.forEach((closeButton)=>{
   closeButton.addEventListener('click', closePopups);
 })
 
-const toggleAddPopup = function () {
-  addPopup.classList.toggle('popup_opened');
+const togglecardAddPopup = function () {
+  cardAddPopup.classList.toggle('popup_opened');
 }
-openAddButton.addEventListener('click', toggleAddPopup);
+profileAddButton.addEventListener('click', togglecardAddPopup);
 
 // Форма
 
-function formSubmitHandler (evt) {
+function submitProfileForm (evt) {
   evt.preventDefault();
 
-  const nameInputValue = editPopup.querySelector('.popup__input_type_name').value;
-  const jobInputValue = editPopup.querySelector('.popup__input_type_job').value;
+  const nameInputValue = popupProfile.querySelector('.popup__input_type_name').value;
+  const jobInputValue = popupProfile.querySelector('.popup__input_type_job').value;
 
   profileName.textContent = nameInputValue
   profileJob.textContent = jobInputValue
 
-  editPopup.classList.toggle('popup_opened');
+  popupProfile.classList.toggle('popup_opened');
 }
 
-editForm.addEventListener('submit', formSubmitHandler);
+popupForm.addEventListener('submit', submitProfileForm);
 
 
 
-function addFormSubmitHandler (evt) {
+function placePopupsubmitProfileForm (evt) {
   evt.preventDefault();
 
-  const placeInputValue = addPopup.querySelector('.popup__input_type_name').value;
-  const linkInputValue = addPopup.querySelector('.popup__input_type_job').value;
+  const placeInputValue = cardAddPopup.querySelector('.popup__input_type_name').value;
+  const linkInputValue = cardAddPopup.querySelector('.popup__input_type_job').value;
   printCard(placeInputValue, linkInputValue);
 
-  addPopup.classList.toggle('popup_opened');
+  cardAddPopup.classList.toggle('popup_opened');
   placeInput.value = '';
   linkInput.value = '';
   
 }
 
-addForm.addEventListener('submit', addFormSubmitHandler);
+placePopupForm.addEventListener('submit', placePopupsubmitProfileForm);
 
 
 // 1 Клонирование карточки
@@ -129,8 +120,6 @@ function printCard(text, link) {
   const cloneText = cardHTML.querySelector('.item__title');
   const like = cardHTML.querySelector('.item__like');
   const trash = cardHTML.querySelector('.item__trash');
-
-  console.log('like', like)
   
   img.src = link;
   cloneText.textContent = text;
