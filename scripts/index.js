@@ -1,17 +1,17 @@
 const popupProfile = document.querySelector('#edit-popup');
 const profileEditButton = document.querySelector('.profile__edit-button');
 const popupsClose = document.querySelectorAll('.popup__close');
-const popupForm = popupProfile.querySelector('.popup__form');
-const nameInput = popupForm.querySelector('.popup__input_type_name');
-const jobInput = popupForm.querySelector('.popup__input_type_job');
+const popupFormProfile = popupProfile.querySelector('.popup__form');
+const nameInput = popupFormProfile.querySelector('.popup__input_type_name');
+const jobInput = popupFormProfile.querySelector('.popup__input_type_job');
 const profileName = document.querySelector('.profile__title');
 const profileJob = document.querySelector('.profile__description');
 
 const cardAddPopup = document.querySelector('#add-card-popup');
 const profileAddPlaceButton = document.querySelector('.profile__add-button');
-const placePopupForm = cardAddPopup.querySelector('.popup__form');
-const placeInput = placePopupForm.querySelector('.popup__input_type_name');
-const linkInput = placePopupForm.querySelector('.popup__input_type_job');
+const placepopupFormProfile = cardAddPopup.querySelector('.popup__form');
+const placeInput = placepopupFormProfile.querySelector('.popup__input_type_name');
+const linkInput = placepopupFormProfile.querySelector('.popup__input_type_job');
 
 const viewPopup = document.querySelector('#popup-image');
 const viewPopupImg = viewPopup.querySelector('.popup__image');
@@ -71,7 +71,7 @@ const openViewPopup = function (src, text) {
   viewPopupImg.alt = text;
   viewPopupText.textContent = text;
 }
-
+//DELETE
 function closePopups() {
   document.querySelector('.popup_opened').classList.remove('popup_opened');
 }
@@ -85,7 +85,7 @@ profileAddPlaceButton.addEventListener('click', openAddPlacePopup);
 
 // Форма
 
-function formSubmitHandler (evt) {
+function submitProfileForm (evt) {
   evt.preventDefault();
 
   const nameInputValue = popupProfile.querySelector('.popup__input_type_name').value;
@@ -97,11 +97,11 @@ function formSubmitHandler (evt) {
   closePopups();
 }
 
-popupForm.addEventListener('submit', formSubmitHandler);
+popupFormProfile.addEventListener('submit', submitProfileForm);
 
 
 
-function placePopupFormSubmitHandler (evt) {
+function submitPlaceForm (evt) {
   evt.preventDefault();
 
   const placeInputValue = cardAddPopup.querySelector('.popup__input_type_name').value;
@@ -114,7 +114,7 @@ function placePopupFormSubmitHandler (evt) {
   
 }
 
-placePopupForm.addEventListener('submit', placePopupFormSubmitHandler);
+placepopupFormProfile.addEventListener('submit', submitPlaceForm);
 
 
 // 1 Клонирование карточки
