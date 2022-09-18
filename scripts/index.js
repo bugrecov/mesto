@@ -62,10 +62,14 @@ const initialCards = [
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupEsc);
+  popup.addEventListener("click", closePopupOverlay);
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.addEventListener('keydown', closePopupEsc);
+  popup.removeEventListener("click", closePopupOverlay);
 }
 
 const clickProfileEditBtnHandler = function () {
@@ -180,3 +184,20 @@ popupFormProfile.addEventListener('submit', submitProfileForm);
 profilePopupClose.addEventListener('click', () => closePopup(popupProfile));
 cardAddPopupClose.addEventListener('click', () => closePopup(cardAddPopup));
 viewPopupClose.addEventListener('click', () => closePopup(viewPopup));
+
+
+function closePopupOverlay(evt) {
+  if (
+    !evt.target.closest(".popup__image") &&
+    !evt.target.closest(".popup__content")
+  ) {
+    closePopup(evt.target.closest(".popup"));
+  }
+}
+
+function closePopupEsc(evt) {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector(".popup_opened");
+    closePopup(openedPopup);
+  }
+}
