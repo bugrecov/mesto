@@ -1,5 +1,3 @@
-
-
 const popupProfile = document.querySelector('#edit-popup');
 const profileEditButton = document.querySelector('.profile__edit-button');
 const popupsClose = document.querySelectorAll('.popup__close');
@@ -26,11 +24,6 @@ const viewPopupClose = viewPopup.querySelector('.popup__close')
 
 
 const placeCardTemplate = document.querySelector('#place-card');
-const cardHTML = placeCardTemplate.content.cloneNode(true);
-const img = cardHTML.querySelector('.item__image');
-const cloneText = cardHTML.querySelector('.item__title');
-const like = cardHTML.querySelector('.item__like');
-const trash = cardHTML.querySelector('.item__trash');
 
 const container = document.querySelector('.grid-elements');
 
@@ -130,7 +123,6 @@ function handleCardFormSubmit (evt) {
 
 // создает разметку новой карточки
 function printCard(text, link) {
-  const placeCardTemplate = document.querySelector('#place-card');
   const cardHTML = placeCardTemplate.content.cloneNode(true);
   const img = cardHTML.querySelector('.item__image');
   const cloneText = cardHTML.querySelector('.item__title');
@@ -168,8 +160,8 @@ function renderCard(text, link) {
 
 // создает карточки из данных массива
 function renderInitialCards(){
-  initialCards.forEach((el) => {
-    renderCard(el.name, el.link)
+  initialCards.forEach((cardData) => {
+    renderCard(cardData.name, cardData.link)
   })
 }
 
