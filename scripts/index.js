@@ -25,8 +25,8 @@ const viewPopupText = viewPopup.querySelector('.popup__image-caption');
 const viewPopupClose = viewPopup.querySelector('.popup__close')
 
 
-const placeCard = document.querySelector('#place-card');
-const cardHTML = placeCard.content.cloneNode(true);
+const placeCardTemplate = document.querySelector('#place-card');
+const cardHTML = placeCardTemplate.content.cloneNode(true);
 const img = cardHTML.querySelector('.item__image');
 const cloneText = cardHTML.querySelector('.item__title');
 const like = cardHTML.querySelector('.item__like');
@@ -99,7 +99,7 @@ const clickOpenAddPlacePopupHandler = function () {
   openPopup(cardAddPopup);
 }
 
-const clickImgHandler = function (src, text) {
+const handleOpenImagePopup = function (src, text) {
   openPopup(viewPopup);
   viewPopupImg.src = src;
   viewPopupImg.alt = text;
@@ -110,7 +110,7 @@ const clickImgHandler = function (src, text) {
 
 
 
-function submitPlaceForm (evt) {
+function handleCardFormSubmit (evt) {
   evt.preventDefault();
 
   const placeInputValue = placeInput.value;
@@ -128,16 +128,17 @@ function submitPlaceForm (evt) {
 // 5 Написать функцию для добавления карточки в ul
 // 6 Пройтись по массиву и вызвать функцию (к каждому элементу)
 
-// создает новую карточку
+// создает разметку новой карточки
 function printCard(text, link) {
-  const placeCard = document.querySelector('#place-card');
-  const cardHTML = placeCard.content.cloneNode(true);
+  const placeCardTemplate = document.querySelector('#place-card');
+  const cardHTML = placeCardTemplate.content.cloneNode(true);
   const img = cardHTML.querySelector('.item__image');
   const cloneText = cardHTML.querySelector('.item__title');
   const like = cardHTML.querySelector('.item__like');
   const trash = cardHTML.querySelector('.item__trash');
   
   img.src = link;
+  img.alt = text;
   cloneText.textContent = text;
 
   like.addEventListener('click', () => 
@@ -149,7 +150,7 @@ function printCard(text, link) {
   );
 
   img.addEventListener('click', () =>
-    clickImgHandler(img.src, cloneText.textContent)
+    handleOpenImagePopup(img.src, cloneText.textContent)
   )
 
   
@@ -166,18 +167,18 @@ function renderCard(text, link) {
 
 
 // создает карточки из данных массива
-function loopCards(){
+function renderInitialCards(){
   initialCards.forEach((el) => {
     renderCard(el.name, el.link)
   })
 }
 
-loopCards();
+renderInitialCards();
 
 profileEditButton.addEventListener('click', handleOpenEditProfilePopup);
 profileAddPlaceButton.addEventListener('click', clickOpenAddPlacePopupHandler);
 
-placePopupFormProfile.addEventListener('submit', submitPlaceForm);
+placePopupFormProfile.addEventListener('submit', handleCardFormSubmit);
 popupFormProfile.addEventListener('submit', handleProfileFormSubmit);
 
 profilePopupClose.addEventListener('click', () => closePopup(popupProfile));
