@@ -181,7 +181,7 @@ viewPopupClose.addEventListener('click', () => closePopup(viewPopup));
 function closePopupOverlay(evt) {
   if (
     !evt.target.closest(".popup__image") &&
-    !evt.target.closest(".popup__content")
+    !evt.target.closest(".popup__container")
   ) {
     closePopup(evt.target.closest(".popup"));
   }

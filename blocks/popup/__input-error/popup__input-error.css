@@ -6,6 +6,6 @@
   line-height: 12px;
   color: #FF0000;
   opacity: 0;
-  min-height: 18px;
+  height: 18px;
   transition: opacity 0.3s linear;
 }
