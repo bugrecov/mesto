@@ -61,6 +61,7 @@ function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupEsc);
   popup.addEventListener("click", closePopupOverlay);
+  enableValidation(validationConfig);
 }
 
 function closePopup(popup) {
