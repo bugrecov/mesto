@@ -1,6 +1,6 @@
 const popupProfile = document.querySelector('#edit-popup');
 const profileEditButton = document.querySelector('.profile__edit-button');
-const popupsClose = document.querySelectorAll('.popup__close');
+const closeButtons = document.querySelectorAll('.popup__close');
 const popupFormProfile = popupProfile.querySelector('.popup__form');
 const nameInput = popupFormProfile.querySelector('.popup__input_type_name');
 const jobInput = popupFormProfile.querySelector('.popup__input_type_job');
@@ -15,7 +15,6 @@ const placePopupFormProfile = cardAddPopup.querySelector('.popup__form');
 const placeInput = placePopupFormProfile.querySelector('.popup__input_type_name');
 const linkInput = placePopupFormProfile.querySelector('.popup__input_type_job');
 const cardAddPopupClose = cardAddPopup.querySelector('.popup__close')
-const popupAddForm = cardAddPopup.querySelector(".popup__form");
 
 const viewPopup = document.querySelector('#popup-image');
 const viewPopupImg = viewPopup.querySelector('.popup__image');
@@ -61,14 +60,24 @@ function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupEsc);
   popup.addEventListener("click", closePopupOverlay);
-  enableValidation(validationConfig);
 }
 
 function closePopup(popup) {
+  const button = popup.querySelector(validationConfig.submitButton);
+  const inputs = Array.from(popup.querySelectorAll(validationConfig.inputSelector));
+  toggleButton (button, inputs, validationConfig);
+  console.log(inputs);
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closePopupEsc);
   popup.removeEventListener("click", closePopupOverlay);
+
 }
+
+// function disabledButton(popup) {
+//   const button = popup.querySelector(validationConfig.submitButton);
+//   button.disabled=true;
+//   button.classList.add(validationConfig.buttonDisabled);
+// }
 
 const handleOpenEditProfilePopup = function () {
   openPopup(popupProfile);
@@ -86,10 +95,11 @@ function handleProfileFormSubmit (evt) {
   profileJob.textContent = jobInputValue
 
   closePopup(popupProfile);
+
+  
 }
 
-const clickOpenAddPlacePopupHandler = function () {
-  popupAddForm.reset();
+const openAddPlacePopup = function () {
   openPopup(cardAddPopup);
 }
 
@@ -110,9 +120,8 @@ function handleCardFormSubmit (evt) {
   const placeInputValue = placeInput.value;
   const linkInputValue = linkInput.value;
   renderCard(placeInputValue, linkInputValue);
-
+  placePopupFormProfile.reset();
   closePopup(cardAddPopup);
-  
 }
 
 // 1 Клонирование карточки
@@ -123,7 +132,7 @@ function handleCardFormSubmit (evt) {
 // 6 Пройтись по массиву и вызвать функцию (к каждому элементу)
 
 // создает разметку новой карточки
-function printCard(text, link) {
+function createCard(text, link) {
   const cardHTML = placeCardTemplate.content.cloneNode(true);
   const img = cardHTML.querySelector('.item__image');
   const cloneText = cardHTML.querySelector('.item__title');
@@ -154,7 +163,7 @@ function printCard(text, link) {
 
 // добавляет новую карточку в html
 function renderCard(text, link) {
-  const newCard = printCard(text, link);
+  const newCard = createCard(text, link);
   container.prepend(newCard);
 }
 
@@ -169,7 +178,7 @@ function renderInitialCards(){
 renderInitialCards();
 
 profileEditButton.addEventListener('click', handleOpenEditProfilePopup);
-profileAddPlaceButton.addEventListener('click', clickOpenAddPlacePopupHandler);
+profileAddPlaceButton.addEventListener('click', openAddPlacePopup);
 
 placePopupFormProfile.addEventListener('submit', handleCardFormSubmit);
 popupFormProfile.addEventListener('submit', handleProfileFormSubmit);
@@ -180,12 +189,9 @@ viewPopupClose.addEventListener('click', () => closePopup(viewPopup));
 
 
 function closePopupOverlay(evt) {
-  if (
-    !evt.target.closest(".popup__image") &&
-    !evt.target.closest(".popup__container")
-  ) {
-    closePopup(evt.target.closest(".popup"));
-  }
+  if (evt.target.classList.contains("popup_opened")) {
+    closePopup(evt.target);
+  } 
 }
 
 function closePopupEsc(evt) {
