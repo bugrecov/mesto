@@ -63,10 +63,7 @@ function openPopup(popup) {
 }
 
 function closePopup(popup) {
-  const button = popup.querySelector(validationConfig.submitButton);
-  const inputs = Array.from(popup.querySelectorAll(validationConfig.inputSelector));
-  toggleButton (button, inputs, validationConfig);
-  console.log(inputs);
+
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closePopupEsc);
   popup.removeEventListener("click", closePopupOverlay);
@@ -121,6 +118,11 @@ function handleCardFormSubmit (evt) {
   const linkInputValue = linkInput.value;
   renderCard(placeInputValue, linkInputValue);
   placePopupFormProfile.reset();
+
+  const button = cardAddPopup.querySelector(validationConfig.submitButton);
+  const inputs = Array.from(cardAddPopup.querySelectorAll(validationConfig.inputSelector));
+  toggleButton (button, inputs, validationConfig);
+
   closePopup(cardAddPopup);
 }
 
